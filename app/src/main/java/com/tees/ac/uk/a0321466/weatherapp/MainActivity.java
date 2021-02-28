@@ -2,10 +2,12 @@ package com.tees.ac.uk.a0321466.weatherapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +20,10 @@ public class MainActivity extends AppCompatActivity {
         city_finder= findViewById(R.id.cityFinder);
         city_finder.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                Toast.makeText(MainActivity.this,"button press",Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(getApplicationContext(),cityFinder.class);
+                startActivity(i);
+                //Toast.makeText(MainActivity.this,"button press",Toast.LENGTH_SHORT).show();
             }
         });
 
