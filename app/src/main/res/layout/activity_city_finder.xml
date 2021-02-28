@@ -19,22 +19,50 @@
 
     </ImageView>
 
-    <EditText
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter city name"
-        android:textColor="#000000"
-        android:textSize="30sp"
+        android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:gravity="center_vertical|center_horizontal"
-        android:inputType="textAutoCorrect"
-        android:imeOptions="actionGo"
-        android:background="@drawable/inputboxstyle"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:id="@+id/searchCity"
         >
 
-    </EditText>
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="enter city name"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:inputType="textAutoCorrect"
+            android:imeOptions="actionGo"
+            android:background="@drawable/inputboxstyle"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:id="@+id/searchCity"
+            >
+        </EditText>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:layout_gravity="right"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="32dp"
+
+    >
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:text="OK" />
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="CANCEL" />
+    </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

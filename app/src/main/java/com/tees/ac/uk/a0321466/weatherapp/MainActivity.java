@@ -27,5 +27,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Intent g= getIntent();
+        String city= g.getStringExtra("city");
+        if(city !=null){
+            Toast.makeText(MainActivity.this, "search :" + city,Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(MainActivity.this, "sorry you entered empty value", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
