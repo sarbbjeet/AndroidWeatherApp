@@ -20,11 +20,9 @@ public class cityFinder extends AppCompatActivity {
         ((ImageView)findViewById(R.id.goBack)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-               handleActivity(""); //go back without data
+                handleActivity(""); //go back without data (pass ""  to mainActivity)
             }
         });
-
 
         //cancel button
         ((Button)findViewById(R.id.btnCancel)).setOnClickListener(new View.OnClickListener() {
@@ -41,7 +39,6 @@ public class cityFinder extends AppCompatActivity {
                 handleActivity(edCity.getText().toString());  //pass enterted city name
             }
         });
-
     }
 
 //    pass data from activity_city_finder to main activity
