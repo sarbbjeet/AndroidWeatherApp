@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,9 +61,16 @@ public class MainActivity extends AppCompatActivity {
                     jsonData.updateData(object);   //pass json data to function to filter data
                     //get double value and convert to string
                     String _temp = Double.toString(jsonData.getTemp());
-                    ((TextView) findViewById(R.id.temperature)).setText(_temp); //display data to textView
+                    String wConditions=jsonData.getWeatherCondition();
 
-                    ((TextView) findViewById(R.id.city)).setText(city); //city name display
+                    //pass data to view (main Activity)
+                    ((TextView) findViewById(R.id.temperature)).setText(_temp); //display data to textView
+                    ((TextView) findViewById(R.id.city)).setText((jsonData.getCityName())+"," + (jsonData.getCountry())); //city,country name display
+                    ((TextView) findViewById(R.id.weatherConditions)).setText(wConditions); //print weather conditions
+
+                    //now change image according to weather conditions
+                    changeImage(jsonData.getWeatherCondition());
+
 
                 }
             });
@@ -93,12 +101,39 @@ public class MainActivity extends AppCompatActivity {
                 jsonData.updateData(object);
                 //get double value and convert to string
                 String _temp = Double.toString(jsonData.getTemp());
-                ((TextView) findViewById(R.id.temperature)).setText(_temp); //display data to textView
 
-                ((TextView) findViewById(R.id.city)).setText("London"); //city name display
+                //pass data to app screen(main Activity)
+                ((TextView) findViewById(R.id.temperature)).setText(_temp); //display data to textView
+                ((TextView) findViewById(R.id.city)).setText((jsonData.getCityName())+"," + (jsonData.getCountry())); //city,country name display
+                ((TextView) findViewById(R.id.weatherConditions)).setText(jsonData.getWeatherCondition()); //print weather conditions
+                //now change image according to weather conditions
+                changeImage(jsonData.getWeatherCondition());
 
             }
         });
+
+    }
+
+    private void changeImage(String wCondtions){
+        switch (wCondtions){
+            case "Mist":
+                ((ImageView)findViewById(R.id.weatherIcon)).setImageResource(R.drawable.fog);
+                break;
+            case "Clouds":
+                ((ImageView)findViewById(R.id.weatherIcon)).setImageResource(R.drawable.cloudy);
+                break;
+            case "Clear":
+                ((ImageView)findViewById(R.id.weatherIcon)).setImageResource(R.drawable.sunny);
+                break;
+            case "Haze":
+                ((ImageView)findViewById(R.id.weatherIcon)).setImageResource(R.drawable.overcast);
+                break;
+                default:
+                    ((ImageView)findViewById(R.id.weatherIcon)).setImageResource(R.drawable.finding);
+                    break;
+
+        }
+
 
     }
 }
