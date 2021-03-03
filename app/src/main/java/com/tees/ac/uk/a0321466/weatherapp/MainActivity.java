@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                     jsonData = new jsonHandler(); //class call
                     jsonData.updateData(object);   //pass json data to function to filter data
                     //get double value and convert to string
-                    String _temp = Double.toString(jsonData.getTemp());
+                    String _temp = String.valueOf((int)(273.15-(jsonData.getTemp())));
                     String wConditions=jsonData.getWeatherCondition();
 
                     //pass data to view (main Activity)
@@ -100,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
                 jsonData = new jsonHandler();
                 jsonData.updateData(object);
                 //get double value and convert to string
-                String _temp = Double.toString(jsonData.getTemp());
+                String _temp = String.valueOf((int)((jsonData.getTemp())-273.15));
 
                 //pass data to app screen(main Activity)
-                ((TextView) findViewById(R.id.temperature)).setText(_temp); //display data to textView
+                ((TextView) findViewById(R.id.temperature)).setText(_temp + "\u00B0" + "C"); //display data to textView
                 ((TextView) findViewById(R.id.city)).setText((jsonData.getCityName())+"," + (jsonData.getCountry())); //city,country name display
                 ((TextView) findViewById(R.id.weatherConditions)).setText(jsonData.getWeatherCondition()); //print weather conditions
                 //now change image according to weather conditions
