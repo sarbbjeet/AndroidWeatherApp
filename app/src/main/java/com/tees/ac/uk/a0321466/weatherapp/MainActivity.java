@@ -1,18 +1,17 @@
 package com.tees.ac.uk.a0321466.weatherapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+//import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+//import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
+//import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -60,16 +59,18 @@ public class MainActivity extends AppCompatActivity {
                     jsonData = new jsonHandler(); //class call
                     jsonData.updateData(object);   //pass json data to function to filter data
                     //get double value and convert to string
-                    String _temp = String.valueOf((int)(273.15-(jsonData.getTemp())));
+                    //get double value and convert to string
+                    String _temp = String.valueOf((int)((jsonData.getTemp())-273.15));
+
                     String wConditions=jsonData.getWeatherCondition();
 
-                    //pass data to view (main Activity)
-                    ((TextView) findViewById(R.id.temperature)).setText(_temp); //display data to textView
+                    //pass data to app screen(main Activity)
+                    ((TextView) findViewById(R.id.temperature)).setText(_temp + "\u00B0" + "C"); //display data to textView
                     ((TextView) findViewById(R.id.city)).setText((jsonData.getCityName())+"," + (jsonData.getCountry())); //city,country name display
                     ((TextView) findViewById(R.id.weatherConditions)).setText(wConditions); //print weather conditions
 
                     //now change image according to weather conditions
-                    changeImage(jsonData.getWeatherCondition());
+                    changeImage(wConditions);
 
 
                 }
@@ -79,10 +80,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             //Toast.makeText(MainActivity.this, "sorry you entered empty value", Toast.LENGTH_SHORT).show();
         }
-
     }
-
-
 
 
     //display data on the app when app is start first time
@@ -111,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void changeImage(String wCondtions){
@@ -133,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
         }
-
 
     }
 }
